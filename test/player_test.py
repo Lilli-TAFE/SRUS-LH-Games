@@ -2,7 +2,7 @@ import unittest
 from app.player import Player
 
 
-class playerTest(unittest.TestCase):
+class PlayerTest(unittest.TestCase):
     def test_player_uid(self):
         bob = Player("id123", "Bob Smith")
         self.assertEqual(bob.uid(), "id123")
