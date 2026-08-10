@@ -1,13 +1,13 @@
 class Player:
-    def __init__(self, uniqueId: str, playerName: str):
-        self.uniqueId = uniqueId
-        self.playerName = playerName
+    def __init__(self, uniqueid: str, playername: str):
+        self.uniqueid = uniqueid
+        self.playername = playername
 
     def uid(self):
-        return self.uniqueId
+        return self.uniqueid
 
     def name(self):
-        return self.playerName
+        return self.playername
 
     def __str__(self):
-        return "" + self.uniqueId + ", " + self.playerName
+        return "" + self.uniqueid + ", " + self.playername
