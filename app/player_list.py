@@ -6,7 +6,8 @@ class PlayerList:
     def __init__(self):
         self.head = None
         self.tail = None
-        self.is_empty = self.head is None and self.tail is None
+        self.size = 0
+        self.is_empty = self.size == 0
 
     def push_head(self, player: Player):
         if self.is_empty:
