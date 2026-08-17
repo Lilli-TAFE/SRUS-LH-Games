@@ -3,30 +3,36 @@ from app.player import Player
 class PlayerNode:
 
     def __init__(self, player: Player):
-        self.player = player
-        self.next = None
-        self.prev = None
+        self._player = player
+        self._next = None
+        self._prev = None
 
-    def get_next(self):
-        return self.next
+    @property
+    def next(self):
+        return self._next
 
-    def set_next(self, next):
-        self.next = next
+    @next.setter
+    def next(self, next):
+        self._next = next
 
-    def get_prev(self):
-        return self.prev
+    @property
+    def prev(self):
+        return self._prev
 
-    def set_prev(self, prev):
-        self.prev = prev
+    @prev.setter
+    def prev(self, prev):
+        self._prev = prev
 
+    @property
     def get_player(self):
-        return self.player
+        return self._player
 
+    @property
     def key(self):
-        return self.player.uid()
+        return self._player.uid
 
     def __str__(self):
-        node_string = "Node key: " + str(self.player)
+        node_string = "Node: " + str(self._player)
         return node_string
 
 
