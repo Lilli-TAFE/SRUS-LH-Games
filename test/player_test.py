@@ -3,13 +3,16 @@ from app.player import Player
 
 
 class PlayerTest(unittest.TestCase):
-    def test_player_uid(self):
+    def test_player_uid_and_name(self):
         bob = Player("id123", "Bob Smith")
-        self.assertEqual(bob.uid(), "id123")
+        # test the uid is set correctly
+        self.assertEqual(bob.uid, "id123")
+        # test the name is set correctly
+        self.assertEqual(bob.name, "Bob Smith")
 
-    def test_player_name(self):
+    def test_player_str(self):
         bob = Player("id123", "Bob Smith")
-        self.assertEqual(bob.name(), "Bob Smith")
+        self.assertEqual(str(bob), "Player ID: id123, Player Name: Bob Smith")
 
 if __name__ == '__main__':
     unittest.main()
