@@ -35,3 +35,15 @@ class PlayerList:
             self._head.next.prev = self._head
 
         self._size += 1
+
+
+    def push_tail(self, player: Player):
+
+        if self.is_empty:
+            self._tail = PlayerNode(player)
+            self._head = self._tail
+        else:
+            self._tail = PlayerNode(player, None, self._tail)
+            self._tail.prev.next = self._tail
+
+        self._size += 1
