@@ -1,4 +1,4 @@
-from app.player import Player
+from player import Player
 
 class PlayerNode:
 
@@ -32,7 +32,6 @@ class PlayerNode:
         return self._player.uid
 
     def __str__(self):
-        node_string = "Node: " + str(self._player)
+        node_string = "Player Node: \n\tPlayer ID: " + self._player.uid
+        node_string += "\n\tPlayer name: " + self._player.name
         return node_string
-
-

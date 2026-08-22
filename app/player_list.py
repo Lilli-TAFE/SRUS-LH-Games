@@ -1,5 +1,5 @@
-from app.player import Player
-from app.player_node import PlayerNode
+from player import Player
+from player_node import PlayerNode
 
 
 class PlayerList:
@@ -92,4 +92,13 @@ class PlayerList:
 
         self._size -= 1
 
-    
+    def display(self, forward = True):
+        current = self.head
+        display_string = "\n\n--- Player List ---\n\n"
+
+        while current != None:
+            display_string += str(current) + "\n"
+            current = current.next if forward else current.prev
+
+        display_string += "\n----- END -----\n\n"
+        return display_string
