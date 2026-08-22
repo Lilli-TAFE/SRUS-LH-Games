@@ -129,3 +129,108 @@ class PlayerListTest(unittest.TestCase):
         self.assertIsNone(list.tail.next)
         # test size of list
         self.assertEqual(list.size, len(players_array))
+
+
+# TEST FIND BY KEY
+
+    def test_find_by_key(self):
+        list = PlayerList()
+
+        players = [["ID123", "Bob Smith"],
+                   ["ID234", "Jane Doe"],
+                   ["ID456", "Mickey Mouse"],
+                   ["ID567", "Donald Duck"]]
+        
+        players_array = []
+
+        for player in players:
+            players_array.append(Player(player[0], player[1]))
+            list.push_head(players_array[-1])
+
+        found_node = list.find_by_key("ID234")
+        self.assertEqual(found_node.player, players_array[1])
+        self.assertEqual(found_node.player.name, players_array[1].name)
+
+        # test ID not in list
+        found_node = list.find_by_key("ID987")
+        self.assertIsNone(found_node)
+
+
+# TEST REMOVAL OF NODES
+
+    def test_remove_head(self):
+        list = PlayerList()
+
+        players = [["ID123", "Bob Smith"],
+                   ["ID234", "Jane Doe"],
+                   ["ID456", "Mickey Mouse"],
+                   ["ID567", "Donald Duck"]]
+        
+        players_array = []
+
+        for player in players:
+            players_array.append(Player(player[0], player[1]))
+            list.push_head(players_array[-1])
+
+        list.remove_head()
+
+        # test head is now the second last item added
+        self.assertEqual(list.head.player, players_array[-2])
+        # test head prev reference is now None
+        self.assertIsNone(list.head.prev)
+        # test list length is correct
+        self.assertEqual(list.size, len(players_array)-1)
+
+
+    def test_remove_tail(self):
+        list = PlayerList()
+
+        players = [["ID123", "Bob Smith"],
+                   ["ID234", "Jane Doe"],
+                   ["ID456", "Mickey Mouse"],
+                   ["ID567", "Donald Duck"]]
+        
+        players_array = []
+
+        for player in players:
+            players_array.append(Player(player[0], player[1]))
+            list.push_head(players_array[-1])
+
+        list.remove_tail()
+
+        # test tail is now the second item added
+        self.assertEqual(list.tail.player, players_array[1])
+        # test tail next reference is none
+        self.assertIsNone(list.tail.next)
+        # test list length is correct
+        self.assertEqual(list.size, len(players_array)-1)
+
+
+    def test_remove_by_key(self):
+        list = PlayerList()
+
+        players = [["ID123", "Bob Smith"],
+                   ["ID234", "Jane Doe"],
+                   ["ID456", "Mickey Mouse"],
+                   ["ID567", "Donald Duck"]]
+
+        # Reverse of player_list
+        players_array = []
+
+        for player in players:
+            players_array.append(Player(player[0], player[1]))
+            list.push_head(players_array[-1])
+
+        list.remove_by_key("ID456")
+
+        # test item not in the list
+        self.assertIsNone(list.find_by_key("ID456"))
+        
+        # test ID567 next refers to ID234
+        self.assertEqual(list.find_by_key("ID567").next.key, "ID234")
+
+        # test ID234 prev refers to ID567
+        self.assertEqual(list.find_by_key("ID234").prev.key, "ID567")
+
+        # test list length is correct
+        self.assertEqual(list.size, len(players_array)-1)

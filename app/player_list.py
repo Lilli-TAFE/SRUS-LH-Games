@@ -47,3 +47,49 @@ class PlayerList:
             self._tail.prev.next = self._tail
 
         self._size += 1
+
+
+    def find_by_key(self, key):
+
+        current_node = self.head
+        keep_searching = True
+
+        while keep_searching:
+            if current_node.key == key:
+                keep_searching = False
+            elif current_node == self.tail:
+                current_node = None
+                keep_searching = False
+            else:
+                current_node = current_node.next
+
+        return current_node
+
+
+    def remove_head(self):
+        self._head = self._head.next
+        self._head.prev = None
+        self._size -= 1
+
+
+    def remove_tail(self):
+        self._tail = self._tail.prev
+        self._tail.next = None
+        self._size -= 1
+
+
+    def remove_by_key(self, key):
+
+        to_remove = self.find_by_key(key)
+
+        if to_remove == self.head:
+            self.remove_head()
+        elif to_remove == self.tail:
+            self.remove_tail()
+        else:
+            to_remove.prev.next = to_remove.next
+            to_remove.next.prev = to_remove.prev
+
+        self._size -= 1
+
+    
