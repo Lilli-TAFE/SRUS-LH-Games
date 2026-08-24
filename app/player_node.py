@@ -10,7 +10,7 @@ class PlayerNode:
         """Initialise the PlayerNode.
 
         Args:
-            player (Player): the Player object stored in the node
+            player (Player): theebapps/rubric/do/course/grade Player object stored in the node
             next (PlayerNode): the next node in the list, None by default
             prev (PlayerNode): the previous node in the list, None by default
         """

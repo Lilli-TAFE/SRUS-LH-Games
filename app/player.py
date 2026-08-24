@@ -25,5 +25,4 @@ class Player:
 
     def __str__(self):
         """Return a string representing a Player."""
-        return ("Player ID: " + self._unique_id + ", Player Name: " 
-                + self._player_name)
+        return "Player ID: " + self._unique_id + ", Player Name: " + self._player_name

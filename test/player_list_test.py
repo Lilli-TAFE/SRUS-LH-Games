@@ -246,6 +246,12 @@ class PlayerListTest(unittest.TestCase):
         # test list length is correct
         self.assertEqual(list.size, len(players_array) - 1)
 
+        ### Test list string
+        print("FORWARDS------------")
+        print(list.display())
+        print("\nBACKWARDS------------")
+        print(list.display(backwards=True))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
