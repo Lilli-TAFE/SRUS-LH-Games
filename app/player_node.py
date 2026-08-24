@@ -26,7 +26,7 @@ class PlayerNode:
         return self._next
 
     @next.setter
-    def next(self, next: PlayerNode):
+    def next(self, next):
         self._next = next
 
     @property
@@ -35,7 +35,7 @@ class PlayerNode:
         return self._prev
 
     @prev.setter
-    def prev(self, prev: PlayerNode):
+    def prev(self, prev):
         self._prev = prev
 
     @property
