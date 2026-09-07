@@ -38,6 +38,14 @@ class PlayerTest(unittest.TestCase):
         # Add the appropriate expression to the following assert test
         self.assertLess(bob, alice)
 
+    def test_sort_players_custom_algorithm(self):
+        # Set up same as test_sort_players
+        players = [Player("01", "Alice", player_score=10), Player("02", "Bob", player_score=5), Player("03", "Charlie", player_score=15)]
+
+        sorted_players = Player.sort_players(players)
+        manually_sorted_players = [Player("03", "Charlie", player_score=15), Player("01", "Alice", player_score=10), Player("02", "Bob", player_score=5)]
+
+        self.assertListEqual(sorted_players, manually_sorted_players)
 
 
 if __name__ == '__main__':

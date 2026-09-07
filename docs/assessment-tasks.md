@@ -243,7 +243,15 @@ def sort_quickly(arr):
 
 What is the expected time and space complexity of the above algorithm? You can answer using big O or in plain English but in both cases you MUST justify your answer.
 
-> Answer here
+> AVERAGE/EXPECTED TIME COMPLEXITY
+> The average time complexity of the algorithm is O(n log n). To explain how much time complexity this algorithm takes, we can multiply the number of recursions by the operations per recursion.
+> Number of recursions: The first recursion takes one array, the second recursion takes two arrays, which are (on average) half the size of the original array minus 1 (for the first pivot), the third recursion takes four arrays, which are on average quarter the size of the original array minus 2 (for the last recursion's pivots), and so on until there is no more than one item per array. So the number of recursions is log(n) minus the pivots, which are ignored as we only consider the highest order term of n in big O notation.
+> Number of operations in each recursion: The first recursion will have n-1 comparisons, because it compares the pivot against every other item. The second recursion will have n-3 operations, because every item except the pivot from the first and second recursions will be compared against the two new pivots, although it will be split into two sides of the recursion. The next recursion will have n-7 operations and so on, until all items are compared. Since we only consider the highest order term of n in the function, we can say there are n comparisons per recursion.
+> The worst case time complexity would occur if the list is already sorted and we choose the largest or smallest item as the pivot each time. In this case, one side of the array will have 0 items and the other will have the remaining n-1 items. In this case there will be n recursions each with n operations, so the worst case is O(n^2).
+>
+> EXPECTED SPACE COMPLEXITY
+> The original array is of length n, which is already held in the heap. The first recursion will allocate each item into one of two arrays which are also stored on the heap, for a total of n-1 items stored. The next recursion will split each into two more arrays minus the pivots, so in that round another n-2 items are stored. Ignoring all but the highest order term of n, the expected space complexity is log n recursions multiplied by n items stored, meaning the space complexity will be (n log n). However, for the worst case scenario where there are n recursions, the space complexity will be n^2. The stack height will add another up to n operations, however this is lower order than (n log n) or n^2 so it can be ignored.
+> The quick sort algorithm can be implemented in a more timeand space efficient way than the above.
 
 ### 5.2. Task: Implement the custom sorting algorithm
 
@@ -258,13 +266,26 @@ Add a separate test case to `test_player.py` to test your custom sorting algorit
 Include your code below:
 
 ```python
-# YOUR CUSTOM Sorting here
+    @classmethod
+    def sort_players(_cls, arr):
+        """Accepts an array of Players and returns a sorted array"""
+        if len(arr) <= 1:
+            return arr
+        pivot = arr[0]
+        left = []
+        right = []
+        for x in arr[1:]:
+            if x > pivot:
+                left.append(x)
+            else:
+                right.append(x)
+        return Player.sort_players(left) + [pivot] + Player.sort_players(right)
 ```
 
 #### 5.2.3. Success criteria
 
-- [ ] Custom sorting algorithm implemented in the `Player` class as `classmethod`
-- [ ] Custom sorting algorithm sorts in descending order
+- [x] Custom sorting algorithm implemented in the `Player` class as `classmethod`
+- [x] Custom sorting algorithm sorts in descending order
 - [ ] Custom sorting algorithm compares players using their score (via the rich comparison operators)
 - [ ] Custom sorting algorithm tested in `test_player.py` and tests passed
 - [ ] At least one commit capturing the above changes

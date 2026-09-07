@@ -35,6 +35,21 @@ class Player:
             raise ValueError("Score cannot be negative")
         self._score = value
 
+    @classmethod
+    def sort_players(_cls, arr):
+        """Accepts an array of Players and returns a sorted array"""
+        if len(arr) <= 1:
+            return arr
+        pivot = arr[0]
+        left = []
+        right = []
+        for x in arr[1:]:
+            if x > pivot:
+                left.append(x)
+            else:
+                right.append(x)
+        return Player.sort_players(left) + [pivot] + Player.sort_players(right)
+
 
     def __str__(self):
         """Return a string representing a Player."""
