@@ -48,3 +48,6 @@ class Player:
         string += "\', uid=\'" + self.uid + "\', score="
         string += str(self.score) + ")"
         return string
+
+    def __lt__(self, other: Player):
+        return self.score < other.score

@@ -146,7 +146,18 @@ def test_players_can_be_compared_by_score(self):
 Run the test and confirm that your error resembles the previous error
 
 ```text
-INSERT ERROR OUTPUT HERE
+======================================================================
+ERROR: test_players_can_be_compared_by_score (test.player_test.PlayerTest.test_players_can_be_compared_by_score)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/home/lilli/Source/Repos/SRUS-LH-Games/test/player_test.py", line 39, in test_players_can_be_compared_by_score
+    self.assertLess(bob, alice)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/usr/lib64/python3.14/unittest/case.py", line 1295, in assertLess
+    if not a < b:
+           ^^^^^
+TypeError: '<' not supported between instances of 'Player' and 'Player'
+
 ```
 
 - Implement the appropriate magic method in the Player class and ensure you pass this test
@@ -155,12 +166,12 @@ INSERT ERROR OUTPUT HERE
 
 #### 4.3.3. Success criteria
 
-- [ ] Unit test added to `test_player.py`
-- [ ] Magic method implemented in `Player` class
-- [ ] Initial Failed Unit test output provided
-- [ ] Unit test runs successfully with submitted code
-- [ ] Dunder method not employed directly
-- [ ] At least one commit capturing the above changes
+- [x] Unit test added to `test_player.py`
+- [x] Magic method implemented in `Player` class
+- [x] Initial Failed Unit test output provided
+- [x] Unit test runs successfully with submitted code
+- [x] Dunder method not employed directly
+- [x] At least one commit capturing the above changes
 
 #### 4.3.4. Task: Are we sorted yet?
 
