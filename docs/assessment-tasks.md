@@ -178,23 +178,39 @@ TypeError: '<' not supported between instances of 'Player' and 'Player'
 Rerun `test_sort_players` does the test pass? If not, include the output below:
 
 ```text
-Your output here
+======================================================================
+FAIL: test_sort_players (test.player_test.PlayerTest.test_sort_players)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/home/lilli/Source/Repos/SRUS-LH-Games/test/player_test.py", line 31, in test_sort_players
+    self.assertListEqual(sorted_players, manually_sorted_players)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [Play[57 chars]id='01', score=10), Player(name='Charlie', uid='03', score=15)] != [Play[57 chars]id='01', score=10), Player(name='Charlie', uid='03', score=15)]
+
+First differing element 0:
+Player(name='Bob', uid='02', score=5)
+Player(name='Bob', uid='02', score=5)
+
+  [Player(name='Bob', uid='02', score=5),
+   Player(name='Alice', uid='01', score=10),
+   Player(name='Charlie', uid='03', score=15)]
+
 ```
 
 ##### 4.3.4.1 Question: why did the equality comparison fail?
 Why did the test fail (note: if it doesn't fail, it means there is something you have already done before you were asked to do so - if that's the case, you need to figure out what that is!)?
 -------
-> Answer here
->
+> While the values of the players are the same, the player objects are not the same.
+> So I need to implement __eq__ to compare two objects as equal.
 -------
 Add the necessary code to the Player class to ensure that the `test_sort_players` test passes.
 
 #### 4.3.5. Success criteria
 
-- [ ] Correct explanation of why `test_sort_players` failed/passed
-- [ ] Correct implementation of the magic method in the `Player` class
-- [ ] `test_sort_players` passes when run against the submitted code
-- [ ] At least one commit capturing the above changes
+- [x] Correct explanation of why `test_sort_players` failed/passed
+- [x] Correct implementation of the magic method in the `Player` class
+- [x] `test_sort_players` passes when run against the submitted code
+- [x] At least one commit capturing the above changes
 
 ## 5. Implement a custom sorting algorithm
 

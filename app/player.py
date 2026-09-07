@@ -51,3 +51,20 @@ class Player:
 
     def __lt__(self, other: Player):
         return self.score < other.score
+
+    def __eq__(self, other):
+        attrs_equal = True  
+
+        # first check if the number of attributes are the same
+        if(len(self.__dict__) != len(other.__dict__)):
+            attrs_equal = False
+
+        for item in other.__dict__:
+            # Check if the attrs_equal is false
+            if not attrs_equal:
+                break
+
+            # Set attrs_equal to the comparison
+            attrs_equal = (other.__dict__[item] == self.__dict__[item])
+
+        return attrs_equal
