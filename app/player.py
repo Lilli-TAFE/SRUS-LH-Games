@@ -55,6 +55,7 @@ class Player:
         """Return a string representing a Player."""
         string = "Player ID: " + self._unique_id
         string += ", Player Name: " + self._player_name
+        string += ", Player score: " + str(self.score)
         return string
 
     def __repr__(self):

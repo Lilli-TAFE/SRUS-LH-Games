@@ -286,9 +286,9 @@ Include your code below:
 
 - [x] Custom sorting algorithm implemented in the `Player` class as `classmethod`
 - [x] Custom sorting algorithm sorts in descending order
-- [ ] Custom sorting algorithm compares players using their score (via the rich comparison operators)
-- [ ] Custom sorting algorithm tested in `test_player.py` and tests passed
-- [ ] At least one commit capturing the above changes
+- [x] Custom sorting algorithm compares players using their score (via the rich comparison operators)
+- [x] Custom sorting algorithm tested in `test_player.py` and tests passed
+- [x] At least one commit capturing the above changes
 
 ### 5.3. Test your custom sorting algorithm at scale
 
@@ -310,16 +310,19 @@ Include your test case below:
 
 ```python
 
-# YOUR TEST CASE HERE
+    def test_sort_1000_players_custom_algorithm(self):
+        players = [Player(f"{i:03}", f"Player {i}", player_score=random.randint(0, 1000)) for i in range(1000)]
+        # builtin method vs custom
+        self.assertEqual(sorted(players, reverse=True), Player.sort_players(players))
 
 ```
 
 #### 5.3.2. Success criteria
 
-- [ ] Test case added to `test_player.py`
-- [ ] Test case sorts 1000 players correctly when compared to `sorted` function
-- [ ] Test case passes when run against the submitted code
-- [ ] At least one commit capturing the above changes
+- [x] Test case added to `test_player.py`
+- [x] Test case sorts 1000 players correctly when compared to `sorted` function
+- [x] Test case passes when run against the submitted code
+- [x] At least one commit capturing the above changes
 
 #### 5.3.3. Task: Testing sorting sorted players
 
