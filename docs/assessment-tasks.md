@@ -335,7 +335,8 @@ Create a test case that tries to sort 1000 players that are already sorted.
 If you get a failure, include the failure below:
 
 ```text
-YOUR FAILURE HERE
+RecursionError: maximum recursion depth exceeded
+FAILED (errors=1)
 ```
 
 ##### 5.3.4.1 Question: Why does the algorithm fail on presorted values?
@@ -344,13 +345,46 @@ Provide a reason why this test failed (if you got a recursion errors, you need t
 
 If your implementation did not fail, you must nevertheless explain why the senior developers algorithm has worse space complexity for presorted values.
 
-> Answer here
+> The default maximum recursion limit in python is 1000, and I checked this with sys.getrecursionlimit().
+> Source: https://docs.python.org/3/library/sys.html#sys.getrecursionlimit
+> In addition to the recursions, python uses some stackframes for running the code itself.
+> Source: https://www.reddit.com/r/learnpython/comments/lsr3yw/how_does_the_recursion_limit_work/
+> When using a sorted array and a pivot at one end of the array, the array is not partitioned in a balanced way as all items are either larger or smaller than the pivot. as such, the recursion must happen n times, where n is the size of the list. In this case, including stackframes used by python itself and setting up the code, with 1000 items, the 1000 recursion limit is reached.
+> On average for an unsorted array, there will be log(n) recursions, so the recursion limit might be reached on a dataset of close to 1,000,000 items but also likely fewer items will reach the recursion limit sometimes.
+> In addition after solving the recursion error, the failures are due to items with the same score may be ordered differently in the built in sorted function than the custom function, even if either order is acceptable.
 
 Propose a fix to your sorting algorithm that fixes this issue.
 
 ```python
-# YOUR FIX HERE
-# Highlight what the fix was
+# Fix for the stack overflow is choosing a different pivot:
+    def sort_players(_cls, arr):
+        """Accepts an array of Players and returns a sorted array"""
+        if len(arr) <= 1:
+            return arr
+        # Choose a pivot near the middle of the dataset.
+        # This should work for near-random and already sorted lists.
+        pivot_index = int(len(arr)/2)
+        pivot = arr[pivot_index]
+        left = []
+        right = []
+        # Sort all but the pivot
+        for x in (arr[:pivot_index] + arr[pivot_index+1:]):
+            if x < pivot:
+                right.append(x)
+            else:
+                left.append(x)
+        return Player.sort_players(left) + [pivot] + Player.sort_players(right)
+
+# Fix for comparing two players are less than (the orders were different but the scores still in order)
+    def __lt__(self, other: Player):
+        is_lt = False
+        if self.score < other.score:
+            is_lt = True
+        elif self.score == other.score:
+            # If the score is the same, compare uid instead
+            is_lt = self.uid < other.uid
+        return is_lt
+
 ```
 
 #### 5.3.5. Success criteria

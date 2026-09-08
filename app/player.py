@@ -40,14 +40,18 @@ class Player:
         """Accepts an array of Players and returns a sorted array"""
         if len(arr) <= 1:
             return arr
-        pivot = arr[0]
+        # Choose a pivot near the middle of the dataset.
+        # This should work for near-random and already sorted lists.
+        pivot_index = int(len(arr)/2)
+        pivot = arr[pivot_index]
         left = []
         right = []
-        for x in arr[1:]:
-            if x > pivot:
-                left.append(x)
-            else:
+        # Sort until the pivot
+        for x in (arr[:pivot_index] + arr[pivot_index+1:]):
+            if x < pivot:
                 right.append(x)
+            else:
+                left.append(x)
         return Player.sort_players(left) + [pivot] + Player.sort_players(right)
 
 
@@ -66,7 +70,13 @@ class Player:
         return string
 
     def __lt__(self, other: Player):
-        return self.score < other.score
+        is_lt = False
+        if self.score < other.score:
+            is_lt = True
+        elif self.score == other.score:
+            # If the score is the same, compare uid instead
+            is_lt = self.uid < other.uid
+        return is_lt
 
     def __eq__(self, other):
         attrs_equal = True  
@@ -84,3 +94,6 @@ class Player:
             attrs_equal = (other.__dict__[item] == self.__dict__[item])
 
         return attrs_equal
+
+import sys
+print("Recursion limit: " + str(sys.getrecursionlimit()))

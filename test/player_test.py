@@ -53,6 +53,12 @@ class PlayerTest(unittest.TestCase):
         # builtin method vs custom
         self.assertEqual(sorted(players, reverse=True), Player.sort_players(players))
 
+    def test_sort_already_sorted_players_custom(self):
+        players = [Player(f"{i:03}", f"Player {i}", player_score=random.randint(0, 1000)) for i in range(1000)]
+        sorted_players = sorted(players, reverse=True)
+
+        self.assertEqual(sorted_players, Player.sort_players(sorted_players))
+
 
 
 if __name__ == '__main__':
