@@ -389,18 +389,18 @@ Propose a fix to your sorting algorithm that fixes this issue.
 
 #### 5.3.5. Success criteria
 
-- [ ] Test case added to `test_player.py`
-- [ ] Test case passes only when changes above are added
-- [ ] Explanation of why the algorithm fails on presorted values
-- [ ] Fix to the algorithm provided
-- [ ] At least one commit capturing the above changes
+- [x] Test case added to `test_player.py`
+- [x] Test case passes only when changes above are added
+- [x] Explanation of why the algorithm fails on presorted values
+- [x] Fix to the algorithm provided
+- [x] At least one commit capturing the above changes
 
 ## 6. Task: Authenticity of in class work
 
 Complete the following snippet before you submit:
 
 ```text
-I, <name and student number>, completed this work in class <room number>, on <date>, under the supervision of <assessor's name>.
+I, Lilli Hooper 20175438, completed this work in class 303 and 260, on 7 September and 8 September, under the supervision of Para (and the remainder during my other class).
 ```
 
 Or (if not completed in class):
@@ -414,13 +414,13 @@ I understand that until I meet my assessor to confirm that this work is a valid 
 
 ## 7. Submit your work
 
-- [ ] Ensure all tasks are complete and tests pass
-- [ ] Answer all questions in your own words
-- [ ] Complete the statement of authenticity
-- [ ] Include `.git` showing each task committed (you must show at least 5 commits)
-- [ ] Annotated tag of your last commit as `por3-finish`
-- [ ] Push your changes to your GitHub repository
-- [ ] Submit a zip of your repository to the LMS (ensure you do not add the `.venv` or `__pycache__` folders)
+- [x] Ensure all tasks are complete and tests pass
+- [x] Answer all questions in your own words
+- [x] Complete the statement of authenticity
+- [x] Include `.git` showing each task committed (you must show at least 5 commits)
+- [x] Annotated tag of your last commit as `por3-finish`
+- [x] Push your changes to your GitHub repository
+- [x] Submit a zip of your repository to the LMS (ensure you do not add the `.venv` or `__pycache__` folders)
 
 ---
 End of assessment task
