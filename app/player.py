@@ -46,7 +46,7 @@ class Player:
         pivot = arr[pivot_index]
         left = []
         right = []
-        # Sort until the pivot
+        # Sort all but the pivot
         for x in (arr[:pivot_index] + arr[pivot_index+1:]):
             if x < pivot:
                 right.append(x)
