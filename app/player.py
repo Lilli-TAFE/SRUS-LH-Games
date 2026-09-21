@@ -24,6 +24,10 @@ class Player:
         """Get the Player's name."""
         return self._player_name
 
+    @name.setter
+    def name(self, name: str):
+        self._player_name = name
+
     @property
     def score(self):
         """Get the Player's score."""
@@ -110,7 +114,6 @@ class Player:
             key_numeric_value += ord(i)
 
         hash = key_numeric_value * multiply_constant
-
         return hash
 
 
