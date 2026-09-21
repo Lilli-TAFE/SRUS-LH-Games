@@ -94,6 +94,3 @@ class Player:
             attrs_equal = (other.__dict__[item] == self.__dict__[item])
 
         return attrs_equal
-
-import sys
-print("Recursion limit: " + str(sys.getrecursionlimit()))

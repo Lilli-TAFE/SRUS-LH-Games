@@ -1,5 +1,5 @@
-from app.player import Player
-from app.player_node import PlayerNode
+from player import Player
+from player_node import PlayerNode
 
 
 class PlayerList:

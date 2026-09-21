@@ -1,4 +1,4 @@
-from app.player import Player
+from player import Player
 
 
 # Referenced PEP-0257 for docstring best practice
