@@ -60,8 +60,6 @@ class PlayerHashMap:
             key_numeric_value += ord(i)
 
         hash = key_numeric_value * multiply_constant
-        print("Large number: " + str(hash))
-        print("mod 10: " + str(hash % 10))
 
         return hash
 

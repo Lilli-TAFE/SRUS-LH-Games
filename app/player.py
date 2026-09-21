@@ -94,3 +94,27 @@ class Player:
             attrs_equal = (other.__dict__[item] == self.__dict__[item])
 
         return attrs_equal
+
+    def lillis_made_up_hash(self, key: str) -> int:
+
+        # Using a prime number promotes even distribution of the keys 
+        # in the array. This is a Mersenne prime with 39 digits in 
+        # base 10: https://www.mersenne.org/primes/
+        multiply_constant = (2**127)-1
+        key_numeric_value = 0
+        # Calculate a numeric value of the key based on ascii value of
+        # each character
+        for i in key:
+            # Reference: How to get the ascii value of a character:
+            # https://stackoverflow.com/questions/227459/how-to-get-the-ascii-value-of-a-character
+            key_numeric_value += ord(i)
+
+        hash = key_numeric_value * multiply_constant
+
+        return hash
+
+
+    def __hash__(self):
+        # The hash is based on the UID only. 
+        # If two objects are equal, their hash will be equal.
+        return self.lillis_made_up_hash(self.uid)
