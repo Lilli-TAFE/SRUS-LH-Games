@@ -1,5 +1,5 @@
-from player import Player
-from player_node import PlayerNode
+from app.player import Player
+from app.player_node import PlayerNode
 
 
 class PlayerList:
@@ -56,7 +56,7 @@ class PlayerList:
     def find_by_key(self, key):
         """Return the first node that matches the key provided."""
         current_node = self.head
-        searching = True
+        searching = False if current_node == None else True
 
         while searching:
             if current_node.key == key:

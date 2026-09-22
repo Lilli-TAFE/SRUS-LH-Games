@@ -93,14 +93,14 @@ class Player:
             # Check if the attrs_equal is false
             if not attrs_equal:
                 break
-
             # Set attrs_equal to the comparison
             attrs_equal = (other.__dict__[item] == self.__dict__[item])
+            print("compared " + str(item))
 
         return attrs_equal
 
-    def lillis_made_up_hash(self, key: str) -> int:
-
+    @classmethod
+    def lillis_made_up_hash(_cls, key: str) -> int:
         # Using a prime number promotes even distribution of the keys 
         # in the array. This is a Mersenne prime with 39 digits in 
         # base 10: https://www.mersenne.org/primes/

@@ -1,6 +1,7 @@
 import unittest
 
 from app.player_hash_map import PlayerHashMap
+from app.player import Player
 
 class PlayerHashMapTest(unittest.TestCase):
 
@@ -8,9 +9,18 @@ class PlayerHashMapTest(unittest.TestCase):
         list = PlayerHashMap()
         self.assertEqual(len(list), 0)
 
-    def test_add_player_to_empty_list(self):
+    def test_add_player_to_empty_list_by_name(self):
         list = PlayerHashMap()
-        pass
+        list["ID487"] = "Bobby Brown"
+        self.assertIsInstance(list["ID487"], Player)
+        self.assertEqual(list["ID487"], Player("ID487", "Bobby Brown"))
+
+    def test_add_player_to_empty_list_by_player_object(self):
+        list = PlayerHashMap()
+        bobby = Player("ID487", "Bobby Brown")
+        list["ID487"] = bobby
+        self.assertIsInstance(list["ID487"], Player)
+        self.assertEqual(bobby, list["ID487"])
 
     def test_add_player_to_populated_list(self):
         pass
