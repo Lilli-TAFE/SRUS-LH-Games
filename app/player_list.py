@@ -96,7 +96,6 @@ class PlayerList:
             to_remove.next.prev = to_remove.prev
             self._size -= 1
 
-
     def display(self, backwards=False, headers=True):
         """Return a string representing the PlayerList.
 

@@ -1,6 +1,6 @@
 from app.player import Player
 from app.player_list import PlayerList
-from math import pi
+
 
 class PlayerHashMap:
     """A class that organises Players into a hash map."""
@@ -57,7 +57,6 @@ class PlayerHashMap:
 
         if player_list.find_by_key(key).player is not None:
             player_list.remove_by_key(key)
-
 
     def display(self):
         """Return a string representing the hash map"""

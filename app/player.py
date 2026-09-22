@@ -1,7 +1,7 @@
 class Player:
     """Represents a Player."""
 
-    def __init__(self, unique_id: str, player_name: str, player_score = 0):
+    def __init__(self, unique_id: str, player_name: str, player_score=0):
         """Initialise the Player.
 
         Args:
@@ -35,7 +35,7 @@ class Player:
 
     @score.setter
     def score(self, value):
-        if (value < 0):
+        if value < 0:
             raise ValueError("Score cannot be negative")
         self._score = value
 
@@ -46,18 +46,17 @@ class Player:
             return arr
         # Choose a pivot near the middle of the dataset.
         # This should work for near-random and already sorted lists.
-        pivot_index = int(len(arr)/2)
+        pivot_index = int(len(arr) / 2)
         pivot = arr[pivot_index]
         left = []
         right = []
         # Sort all but the pivot
-        for x in (arr[:pivot_index] + arr[pivot_index+1:]):
+        for x in arr[:pivot_index] + arr[pivot_index + 1 :]:
             if x < pivot:
                 right.append(x)
             else:
                 left.append(x)
         return Player.sort_players(left) + [pivot] + Player.sort_players(right)
-
 
     def __str__(self):
         """Return a string representing a Player."""
@@ -68,8 +67,8 @@ class Player:
 
     def __repr__(self):
         """Return a representation of the Player object."""
-        string = self.__class__.__name__ + "(name=\'" + self.name
-        string += "\', uid=\'" + self.uid + "\', score="
+        string = self.__class__.__name__ + "(name='" + self.name
+        string += "', uid='" + self.uid + "', score="
         string += str(self.score) + ")"
         return string
 
@@ -83,10 +82,10 @@ class Player:
         return is_lt
 
     def __eq__(self, other):
-        attrs_equal = True  
+        attrs_equal = True
 
         # first check if the number of attributes are the same
-        if(len(self.__dict__) != len(other.__dict__)):
+        if len(self.__dict__) != len(other.__dict__):
             attrs_equal = False
 
         for item in other.__dict__:
@@ -94,16 +93,16 @@ class Player:
             if not attrs_equal:
                 break
             # Set attrs_equal to the comparison
-            attrs_equal = (other.__dict__[item] == self.__dict__[item])
+            attrs_equal = other.__dict__[item] == self.__dict__[item]
 
         return attrs_equal
 
     @classmethod
     def lillis_made_up_hash(_cls, key: str) -> int:
-        # Using a prime number promotes even distribution of the keys 
-        # in the array. This is a Mersenne prime with 39 digits in 
+        # Using a prime number promotes even distribution of the keys
+        # in the array. This is a Mersenne prime with 39 digits in
         # base 10: https://www.mersenne.org/primes/
-        multiply_constant = (2**127)-1
+        multiply_constant = (2**127) - 1
         key_numeric_value = 0
         # Calculate a numeric value of the key based on ascii value of
         # each character
@@ -115,8 +114,7 @@ class Player:
         hash = key_numeric_value * multiply_constant
         return hash
 
-
     def __hash__(self):
-        # The hash is based on the UID only. 
+        # The hash is based on the UID only.
         # If two objects are equal, their hash will be equal.
         return self.lillis_made_up_hash(self.uid)
