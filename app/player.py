@@ -95,7 +95,6 @@ class Player:
                 break
             # Set attrs_equal to the comparison
             attrs_equal = (other.__dict__[item] == self.__dict__[item])
-            print("compared " + str(item))
 
         return attrs_equal
 

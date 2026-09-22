@@ -35,7 +35,7 @@ class PlayerHashMap:
         node = player_list.find_by_key(key)
         found_player = None if node is None else player_list.find_by_key(key).player
         # If it isn't, create a player and add the player to the player list
-        if found_player == None:
+        if found_player is None:
             # Add the player object or new player to tail
             player_list.push_tail(Player(key, name))
         # If it is, update the player's name
