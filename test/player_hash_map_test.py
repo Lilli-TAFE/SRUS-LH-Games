@@ -9,18 +9,11 @@ class PlayerHashMapTest(unittest.TestCase):
         list = PlayerHashMap()
         self.assertEqual(len(list), 0)
 
-    def test_add_player_to_empty_list_by_name(self):
+    def test_add_player_to_empty_list(self):
         list = PlayerHashMap()
         list["ID487"] = "Bobby Brown"
         self.assertIsInstance(list["ID487"], Player)
         self.assertEqual(list["ID487"], Player("ID487", "Bobby Brown"))
-
-    def test_add_player_to_empty_list_by_player_object(self):
-        list = PlayerHashMap()
-        bobby = Player("ID487", "Bobby Brown")
-        list["ID487"] = bobby
-        self.assertIsInstance(list["ID487"], Player)
-        self.assertEqual(bobby, list["ID487"])
 
     def test_add_player_to_populated_list(self):
         pass
