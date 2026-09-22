@@ -73,19 +73,21 @@ def sha256_hash(key: str, size: int) -> int:
 
 1. All of the above functions are hash functions. Explain how so - what key properties do they all share?
 
-> Your answer here
+> They all take inputs from the key or object they are hashing, then output an integer within a given range (usually from 0 to size, but in the case of stupidly simple hash, the range is just 1).
 
-2. What are the advantages and disadvantages of each of the above hash functions? Evaluate in terms of uniformity, determinism, efficiency, collision resistance, sensitivity to input changes, and security[1](#Reference). You may need to do some reasearch to answer this question 😱
+2. What are the advantages and disadvantages of each of the above hash functions? Evaluate in terms of uniformity, determinism, efficiency, collision resistance, sensitivity to input changes, and security[1](#Reference). You may need to do some research to answer this question 😱
 
 > Your answer here
 
 3. List the three most important attributes (arranged from most to least) in the context of a hash map? Justify your answer.
 
-> Your answer here
+> 1. The hash output is the same every time. This is most important as you must be able to retrieve items by the hashed key.
+> 2. The outputs should be roughly evenly distributed across the given range. This is to improve the efficiency of searches. In the case of security, an output that is uneven may make it easier to predict its behaviour, and therefore break the security features.
+> 3. The output is not reversible, as in you should not be able to use the output to identify the inputs. This is more important for security purposes rather than simple storage structures, however it is a major security tool in the online world today.
 
 4. Which of the above hash functions would you choose to implement the requirements of the task? Why?
 
-> Your answer here
+> Since security is not a key requirement of this hash, a function like the sum_of_ascii_values may be appropriate. In case there is some reduced randomness from the sum of ascii values, I chose to multiply the result by a large prime number which could help distribute the outputs over the range. I chose a large prime number which does not help where the range is only 10. However, it could help for a very large range.
 
 5. In your own words, explain each line in the pearson hash function above in terms of the criteria you listed in question 2.
 
@@ -93,17 +95,25 @@ def sha256_hash(key: str, size: int) -> int:
 
 6. Write pseudocode of how you would store Players in PlayerLists in a hash map.
 
-> Your answer here
+> array = [10]
+>
+> for i in array:
+>   array[i] = new PlayerList()
+>
+> bob = new Player("ID123", "Bob")
+>
+> array[hash("ID123")] = bob
+
 
 ## Reflection
 
 1. What was the most challenging aspect of this task?
 
-> Your answer here
+> I got stuck because when I saw it say to implement the hash map like a dict structure with the built in dunder methods, I assumed I would have to fully implement it this way. However when I realised that I could just implement only the methods given in the assessment, it was not too difficult to do. The second most challenging thing was choosing a hashing function to implement as there are so many, but I didn't want to spend too much time unnecessarily.
 
 2. If you didn't have to use a PlayerList, how would you have changed them implementation of the hash map and why?
 
-> Your answer here
+> There are many data structures that can be used to handle collisions. For example, python's built-in list structure is dynamically sized and might be appropriate. However there are many other ways to handle this. I would have done more research on the best structure for the requirements before implementing anything.
 
 ## Reference
 
