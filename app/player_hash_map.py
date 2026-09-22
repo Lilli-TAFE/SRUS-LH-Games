@@ -24,7 +24,10 @@ class PlayerHashMap:
 
 
     def __getitem__(self, key):
-        pass
+        player_list = self.hashmap[self.get_index(key)]
+        return player_list.find_by_key(key)
+
+
 
     def __setitem__(self, key: str, name: str) -> None:
         """ Psuedo code:
