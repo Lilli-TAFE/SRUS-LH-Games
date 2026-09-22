@@ -72,13 +72,15 @@ class PlayerList:
     def remove_head(self):
         """Remove the head node from the PlayerList."""
         self._head = self._head.next
-        self._head.prev = None
+        if self._head is not None:
+            self._head.prev = None
         self._size -= 1
 
     def remove_tail(self):
         """Remove the tail node from the PlayerList."""
         self._tail = self._tail.prev
-        self._tail.next = None
+        if self._tail is not None:
+            self._tail.next = None
         self._size -= 1
 
     def remove_by_key(self, key):
@@ -92,21 +94,25 @@ class PlayerList:
         else:
             to_remove.prev.next = to_remove.next
             to_remove.next.prev = to_remove.prev
+            self._size -= 1
 
-        self._size -= 1
 
-    def display(self, backwards=False):
+    def display(self, backwards=False, headers=True):
         """Return a string representing the PlayerList.
 
         Args:
             backwards (bool): Set to True to display list from tail to head.
         """
         current = self.tail if backwards else self.head
-        display_string = "\n\n--- Player List ---\n\n"
+        display_string = ""
+        if headers:
+            display_string += "\n\n--- Player List ---\n\n"
 
         while current != None:
             display_string += str(current) + "\n"
             current = current.prev if backwards else current.next
 
-        display_string += "\n----- END -----\n\n"
+        if headers:
+            display_string += "\n----- END -----\n\n"
+
         return display_string
